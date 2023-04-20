@@ -72,16 +72,6 @@ You'll need about half a meter of suitable guage wiring to extend these wires ou
 
 CAD files for printing the box are given in the `CAD` folder. There's not much to go into here, as the box offers no extra safety except to hide the wired connection points.
 
-
-## Arduino Code
-
-![Blender speed versus servo angle](./Images/desmos-graph.png)
-_Servo angle (x) against rotor speed (y). Notice the sharp dip in speed around_ $\theta$ _= 50 rpm This explains why speed is unreliable here; Small changes at low power settings make the speed very touchy and sensitive to position._
-
-I have since added a small 9g servo to the top of the box to operate the dial (which allows for on-off cycling). As it doesn't affect the main electronics, I'll add the code used to operate it in the code folder. The data is [on desmos](https://www.desmos.com/calculator/bqjuhv8qqg) if you're looking to play around with it.
-
-The addition of the servo is very simple, so I won't get into the details (as there is not much to get into), but consists of adding a mounting arm to the top of the box and a coupling for the servo arm to attatch directly to the potentiometer secured in with a little contact adhesive.
-
 ![Blender servo arm](./Images/Dimmer-v1.png)
 
 _Potentiometer blender with added servo._
