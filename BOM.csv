@@ -1,11 +1,12 @@
 Item,Link,Qty,Price per Unit,Cost,Description
-Kenwood BLP31.D0WG,https://www.argos.co.uk/product/8132303,1,£53.00 ,£53.00 ,Decent blender with good power output at a nice price point.
-United Automation QVR-TB-RFI,https://uk.rs-online.com/web/p/thyristors/2143963,1,£64.30 ,£64.30 ,Overkill SCR circuit with potentiometer control.
+AMZChef NY-8088MJD,https://www.amazon.co.uk/Smoothie-AMZCHEF-Commercial-Container-25000RPM/dp/B08CKTB6Z4,1,£150.00,£150.00,"Top of the line commercial blender, resistant to some solvents."
+Walfront Dimmer Circuit,https://www.amazon.co.uk/Digital-Voltage-Regulator-Control-Thermostat/dp/B076VKJM42,1,£17.43,£17.43,"Easy to use, and has the potential for wiring in a separate board."
 Heat Shrink,,-,-,-,To protect soldered collections.
 Soldering iron,,-,-,-,Solder wires together.
-Red wire 20 awg ~ 300 mm,https://www.amazon.co.uk/Electrical-Wire-AWG-Extension-Brightfour/dp/B07CGKCJFV,-,-,-,"Live wiring, of good gauge to handle the current."
-Black wire 20 awg ~ 300 mm,https://www.amazon.co.uk/Electrical-Wire-AWG-Extension-Brightfour/dp/B07CGKCJFV,-,-,-,"Neutral wiring, of good gauge to handle the current."
-CAD/Upper.step,,-,-,-,To isolate the live AC and be a little safer.
-CAD/Lid.step,,-,-,-,To isolate the live AC and be a little safer.
-M4 countersink 15 mm,https://uk.rs-online.com/web/p/socket-screws/0171837,4,£0.20 ,£0.80 ,To bolt the potentiometer box lid shut.
-,,,,£118.10 ,
+Aluminium Foil,,-,-,-,To isolate the Snubber circuit from the arduino.
+Red wire 20 awg,https://www.amazon.co.uk/Electrical-Wire-AWG-Extension-Brightfour/dp/B07CGKCJFV,-,-,-,"Live wiring, of good gauge to handle the current."
+Black wire 20 awg,https://www.amazon.co.uk/Electrical-Wire-AWG-Extension-Brightfour/dp/B07CGKCJFV,-,-,-,"Neutral wiring, of good gauge to handle the current."
+3DP Bolt-on box,,-,-,-,"To isolate the live AC and be a little safer, also allow a little airflow."
+3DP Backing Plate,,-,-,-,To eliminate the need for nuts to fix in the bolt-on box
+M4 countersink 15 mm,https://uk.rs-online.com/web/p/socket-screws/0171837,6,£0.20,£1.20,To bolt the Pink box lid shut.
+,,,,£168.63,

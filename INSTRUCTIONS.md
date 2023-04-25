@@ -24,9 +24,11 @@ The main advantages to this type of rectification compared to other similar func
 
 <img src="https://www.libratherm.com/wp-content/uploads/2020/06/2.1-phase-angle-control-representation.jpg">
 
-_Simple representation of phase angle control._
+_[Simple representation of phase angle control.](https://www.libratherm.com/phase-angle-control-vs-zero-crossover-control/)_
 
 The AC signal in potentiometer controlled cases is routed through a voltage divider which feeds into the GATE pin of the Triac. The exact electronics and some of the issues surrounding these circuits is well discussed in [this article](https://eepower.com/technical-articles/alternating-current-ac-load-control-with-triacs/#). In arduino controlled units, there will be some sort of isolation between the low and high voltage side, primarily through the use of an optocoupler or [similar circuitry](https://www.circuitar.com/nanoshields/modules/triac/).
+
+The original circuitry on the blender used here is a less precise "Burst firing" control, where multiple periods of AC are allowed through at a time, effectively meaning the regulation cycle is much longer than that achievable by Phase angle Control.
 
 
 
@@ -40,38 +42,38 @@ The AC signal in potentiometer controlled cases is routed through a voltage divi
 |Soldering iron         |                                                                                     |-  |-             |-      |Solder wires together.                                                    |
 |Red wire 20 awg        |https://www.amazon.co.uk/Electrical-Wire-AWG-Extension-Brightfour/dp/B07CGKCJFV      |-  |-             |-      |Live wiring, of good gauge to handle the current.                         |
 |Black wire 20 awg      |https://www.amazon.co.uk/Electrical-Wire-AWG-Extension-Brightfour/dp/B07CGKCJFV      |-  |-             |-      |Neutral wiring, of good gauge to handle the current.                      |
-|3DP Bolt-on box        |                                                                                     |-  |-             |-      |To isolate the live AC and be a little safer, also allow a little airflow.|
-|3DP Backing Plate      |                                                                                     |-  |-             |-      |To eliminate the need for nuts to fix in the bolt-on box.                 |
-|M4 countersink 15 mm   |https://uk.rs-online.com/web/p/socket-screws/0171837                                 |5  |£0.20         |£1.00  |To bolt the lid shut!                                                     |
+|3DP Bolt-on box        |                                                                                     |-  |-             |-      |To isolate the live AC and be a little safer, also allow a little airflow (Both printed components are contained in the same .f3d archive file).|
+|3DP Backing Plate      |                                                                                     |-  |-             |-      |To eliminate the need for nuts to fix in the bolt-on box (Both printed files are contained in the same .f3d archive file).                 |
+|M4 countersink 15 mm   |https://uk.rs-online.com/web/p/socket-screws/0171837                                 |6  |£0.20         |£1.20  |To bolt the backing plate to the Dimmer and                                                      |
 |                       |                                                                                     |   |              |£168.43|                                                                          |
 
 
 ## Mods
 
-There are no direct modifications to the blender itself, apart from wiring in the dimmer module. In my case, I decided to remove the connections to the main switch dial at the front of the blender, as it didn't add any extra security or control to the blender.
+There are no direct modifications to the blender itself, apart from wiring in the dimmer module. In this case, a little fitting is needed in order for everything to sit nicely within the blender.
 
-Note that there are much cheaper [pot dimmer circuits](https://www.amazon.co.uk/AITRIP-Control-Controller-Adjustable-Regulator/dp/B08L7NF4Q9) available (at £4.50 a pop), but we decided to go with the overkill option to save any potential headaches. With pot blenders, you can't exactly return to the same power setting unless you have some readout to go with it, for example, a frequency, a precise angle or a power reading. There are [modules](https://www.amazon.co.uk/gp/product/B076VKJM42) which have digital readouts for a more precise reading. Again it is important to stress that precise power $\neq$ precise speed reading.
+Firstly, we removed the blender control board from the front of the blender, effectively removing any interference from the on-board electronics, this can then be discarded. In this blender, there is a bespoke power management IC in order to power the blender and the control board. We do not require this board for the blender to function, so it can be removed, we opted for it to stay in there, as it gives us some flexibility to use the on-board switches later. Much like in the previous version, we're looking to follow the same steps as the v1 blender, by wiring the dimmer module between the motor and mains AC.
 
 ### Wiring
 
-![Opened blender with labelled modifications](./Images/Hacking_Guide.png)
+![Blender Opened](./Images/Wiring_Image.jpeg)
 
-1.	Unsolder the black wire from the motor to the control switch. This lead is the LIVE AC OUT (**L AC-MOTOR**) to the motor.
-2. Unsolder the Yellow Wire from the control switch. This is the LIVE AC IN (**L AC-IN**) to the dimmer.
-    
-    At this point, the control switch is completely bypassed, but the safety switch isn't. I prefer to keep the safety switch wired in, as it ensures the blender is not live when the jug isnt plugged in.
-    
-    During my testing, position "P" and "2" on the dial were a simple on off switch (for full AC Power), while position "1" cut the negative half of the waveform.
-    
-3. The white wire is neutral mains, wired directly to the motor. Cut the wire roughly halfway. This is NEUTRAL AC OUT (**N AC-MOTOR**) to the motor.
-4. The other side of the wire cut cut in step 3 is NEUTRAL AC IN (**N AC-IN**) to the Dimmer.
+_Blender with modifications, opened from above._
 
-You'll need about half a meter of suitable guage wiring to extend these wires out of the blender. These will take a bit of current, so ensure they are soldered well.
+In the above; Live (brown), Ground (Yellow), Neutral (Blue) are routed into the blender from the bottom left. Neutral and Live are wired into the power IC (left side of the blender), while ground is connected to the cast motor mounting. The signal is filtered, passed through the main switch (right side of the blender) and then fed back into the power IC.
 
-### Printing
+After, Live and Neutral are routed to the top of blender through a hole to the dimmer module on that side (obscured by the 3D printed bolt-on box). Ground is also wired through to the Dimmer module so that the electronics share a common ground.
 
-CAD files for printing the box are given in the `CAD` folder. There's not much to go into here, as the box offers no extra safety except to hide the wired connection points.
+![Blender Opened](./Images/Triac_Mounted.jpeg)
 
-![Blender servo arm](./Images/Dimmer-v1.png)
+_Dimmer module, mounted to the side of the blender_
 
-_Potentiometer blender with added servo._
+Motor live, motor neutral, mains live and mains neutral (after passing through the power management IC) are all passed into the board, and the board is grounded using one of the two M4 countersink bolts used to attatch the dimmer module to the blender. The control signal is passed via the white cable down to the screen module, which is glued in place (bottom of the blender in the first image of this section). The 3D printed enclosure sits above and is fixed in place using 4 M4 countersink bolts.s
+
+### Future Modifications
+
+![Blender Opened](./Images/Built_in_HES.jpeg)
+
+_Builtin Hall-Effect Sensor, with two magnets, should allow for very precise speed measurements up to high rpms._
+
+As noted before, there stands a lot to be modified with this setup, it offers a range of features including on-board power management and speed sensing, and with a small amount of effort, could be made into a completely autonomous blender.
